@@ -17,6 +17,10 @@ class Application {
             } 
         }
 
+        if ($this->show404) {
+                echo "404, not found";
+            }
+
     }
 
     private function parseURL() {
