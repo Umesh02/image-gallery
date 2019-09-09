@@ -4,7 +4,11 @@ class ImageController extends Controller
 {
     public function index()
     {
-        $this->renderTemplate('index', "Everything is working");
+        $template = 'index';
+        if (isset($_GET['id'])) {
+            $template = 'image';
+        }
+        $this->renderTemplate($template, "Everything is working!");
     }
 
     public function renderTemplate($template, $data = [])
@@ -12,5 +16,4 @@ class ImageController extends Controller
         $view = $this->view('image/' . $template, ['data' => $data]);
         $view->render();
     }
-
 }

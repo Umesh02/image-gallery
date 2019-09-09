@@ -11,5 +11,6 @@ require_once APP . 'Application.php';
 require_once APP . 'Controller.php';
 require_once APP . 'View.php';
 require_once CONTROLLER . 'ImageController.php';
+require_once CONTROLLER . 'UploadController.php';
 
 new Application;
