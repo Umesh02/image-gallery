@@ -31,13 +31,23 @@
                 </button>
             </form>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item  m-1">
-                    <a class="btn btn-primary" data-toggle="modal" data-target="#login-modal" href="#">Sign In
-                    </a>
-                </li>
-                <li class="nav-item  m-1">
-                    <a class="btn btn-info" data-toggle="modal" data-target="#register-modal" href="#">Sign Up </a>
-                </li>
+
+                <?php if (isset($_SESSION['userId'])) { ?>
+                    <li class="nav-item  m-1">
+                        <a class="btn btn-success" href="/user">My Profile </a>
+                    </li>
+                    <li class="nav-item  m-1">
+                        <a class="btn btn-warning" href="/user/logout">Log Out </a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item  m-1">
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#login-modal" href="#">Sign In
+                        </a>
+                    </li>
+                    <li class="nav-item  m-1">
+                        <a class="btn btn-info" data-toggle="modal" data-target="#register-modal" href="#">Sign Up </a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </nav>

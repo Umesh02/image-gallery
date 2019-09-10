@@ -52,6 +52,7 @@ class  UserModel extends BaseModel  // named as User in the course
         return $db->execute();
     }
 
+    // Setters
     public function setEmail($email)
     {
         $this->email = $email;
@@ -60,5 +61,36 @@ class  UserModel extends BaseModel  // named as User in the course
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+    }
+
+    // Getters
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function isDeleted()
+    {
+        return $this->deleted;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 }

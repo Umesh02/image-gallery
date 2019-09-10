@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 define('ROOT', dirname(__DIR__) . '/');
 define('APP', ROOT . 'app/');
 define('MODEL', ROOT . 'src/Model/');

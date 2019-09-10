@@ -41,7 +41,31 @@ class userController extends Controller
         $this->model->saveUser();
 
         // Log in user
+        $this->login($email, $password);
+    }
 
+    public function login($email = '', $password = '')
+    {
+        if (isset($_POST['email'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+        }
+
+        // Load the user from DB
+        $this->model('userModel'); // named as 'user' in the course
+        $user = $this->model->getUserByEmail($email);
+
+        if (!$user) {
+            echo "Incorrect Email-Password combination!";
+            die();
+        }
+
+        if ($user->getEmail() === $email && $this->passwordsMatch($password, $user->getPassword())) {
+            $_SESSION['user'] = $user->getEmail();
+            $_SESSION['userId'] = $user->getId();
+
+            header('Location:' . $_SERVER['HTTP_REFERER']);
+        }
     }
 
     public function renderTemplate($template, $data = [])
@@ -53,5 +77,16 @@ class userController extends Controller
     private function encryptPassword($password)
     {
         return crypt($password, '$2y$14$wHhBmAgOMZEld9iJtV./aq');
+    }
+
+    private function passwordsMatch($password, $hashedPassword)
+    {
+        return crypt($password, '$2y$14$wHhBmAgOMZEld9iJtV./aq') === $hashedPassword;
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header('Location:' . $_SERVER['HTTP_REFERER']);
     }
 }

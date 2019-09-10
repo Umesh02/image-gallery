@@ -1,36 +1,38 @@
 <!-- Modal Start -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="">Username / Email</label>
-                    <input type="email" class="form-control" name="" id="" />
+        <form action="/user/login" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password" class="form-control" name="" id="" />
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="email">Username / Email</label>
+                        <input type="email" class="form-control" name="email" id="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="remember">
+                            <input type="checkbox" name="remember" id="remember" />
+                            Remember me
+                        </label>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="remember">
-                        <input type="checkbox" name="" id="remember" />
-                        Remember me
-                    </label>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Jump In</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Jump In</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                    Close
-                </button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 
