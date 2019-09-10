@@ -18,5 +18,6 @@ require_once CONTROLLER . 'userController.php';
 require_once MODEL . 'DbConnection.php';
 require_once MODEL . 'BaseModel.php';
 require_once MODEL . 'UserModel.php';  // named as 'User' in the course
+require_once MODEL . 'ImageModel.php';  // named as 'Image' in the course
 
 new Application;
