@@ -5,10 +5,16 @@ class ImageController extends Controller
     public function index()
     {
         $template = 'index';
+        $data = '';
         if (isset($_GET['id'])) {
             $template = 'image';
+        } else {
+            $template = 'index';
+            $this->model('ImageModel');
+            $data = $this->model->getAllImages();
         }
-        $this->renderTemplate($template, "Everything is working!");
+
+        $this->renderTemplate($template, $data);
     }
 
     public function renderTemplate($template, $data = [])
