@@ -69,11 +69,31 @@ class ImageModel extends BaseModel
         $query = $db->prepare($sql);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        $date = [];
+        $data = [];
         foreach ($result as $image) {
             $data[] = new ImageModel($image);
         }
         return $data;
+    }
+
+    public function getImageById($id)
+    {
+        $sql = "SELECT * FROM image WHERE id = :id AND deleted = false";
+        $db = $this->connect();
+        $query = $db->prepare($sql);
+        $query->bindParam('id', $id);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result ? new ImageModel($result) : $result;
+    }
+
+    public function incrementImageViews()
+    {
+        $sql = "UPDATE image SET views = views + 1 WHERE id = :id AND deleted = false";
+        $db = $this->connect();
+        $query = $db->prepare($sql);
+        $query->bindParam('id', $this->id);
+        $query->execute();
     }
 
     // Setters
@@ -97,6 +117,11 @@ class ImageModel extends BaseModel
         $this->path = $path;
     }
 
+    public function setViews($views)
+    {
+        $this->views = $views;
+    }
+
     // Getters
     public function getId()
     {
@@ -116,6 +141,11 @@ class ImageModel extends BaseModel
     public function getUser()
     {
         return $this->user;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     public function isDeleted()

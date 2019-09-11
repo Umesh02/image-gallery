@@ -18,7 +18,7 @@
      </div>
      <div class="row">
          <?php foreach ($images as $image) { ?>
-             <div class="col-md-4">
+             <div class="col-lg-3 col-md-4 mb-4">
                  <a href="/image?id=<?= $image->getId(); ?>">
                      <div class="card">
                          <img class="card-img-top" src="<?= $image->getPath(); ?>" alt="" />
@@ -27,7 +27,7 @@
                              <div class="row">
                                  <div class="col-4"><i class="fas fa-arrow-up"></i> 12</div>
                                  <div class="col-4"><i class="fas fa-comments"></i> 5</div>
-                                 <div class="col-4"><i class="fas fa-eye"></i> <?= $image->getViews(); ?>k</div>
+                                 <div class="col-4"><i class="fas fa-eye"></i> <?= $image->getViews(); ?></div>
                              </div>
                          </div>
                      </div>

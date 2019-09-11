@@ -6,11 +6,14 @@ class ImageController extends Controller
     {
         $template = 'index';
         $data = '';
+        $this->model('ImageModel');
         if (isset($_GET['id'])) {
             $template = 'image';
+            $data = $this->model->getImageById($_GET['id']);
+            $data->incrementImageViews();
+            $data->setViews($data->getViews() + 1);
         } else {
             $template = 'index';
-            $this->model('ImageModel');
             $data = $this->model->getAllImages();
         }
 
