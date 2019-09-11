@@ -65,7 +65,10 @@ class userController extends Controller
             $_SESSION['userId'] = $user->getId();
 
             header('Location:' . $_SERVER['HTTP_REFERER']);
-        }
+        } else {                                                // extra code added to address incorrect password
+            echo "Incorrect Email-Password combination!";       // extra code added to address incorrect password
+            die();                                              // extra code added to address incorrect password
+        }                                                       // extra code added to address incorrect password
     }
 
     public function renderTemplate($template, $data = [])
